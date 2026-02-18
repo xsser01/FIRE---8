@@ -34,6 +34,23 @@
             line-height: 1.6;
         }
         
+        /* Profile Image */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+            object-fit: cover;
+            animation: glitch 3s infinite;
+        }
+        
         /* Glitch Effect */
         .glitch {
             position: relative;
@@ -579,6 +596,11 @@
                 <div class="terminal-dot yellow"></div>
                 <div class="terminal-dot green"></div>
                 <span style="margin-left: 20px; color: var(--matrix-green);">~/xsser01</span>
+            </div>
+            
+            <!-- Profile Image - Add your image here -->
+            <div class="profile-container">
+                <img src="Screenshot_2026-02-18-11-02-36-08_99c04817c0de5652397fc8b56c3b3817-Picsart-AiImageEnhancer.jpg" alt="xsser01 Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/120x120/00ff41/000000?text=xsser01'">
             </div>
             
             <h1><span>&gt;</span> xsser01<span class="cursor"></span></h1>
