@@ -507,6 +507,11 @@
             margin: 20px 0;
         }
         
+        /* مخفي - للمشغل */
+        .hidden-audio {
+            display: none;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -598,7 +603,7 @@
                 <span style="margin-left: 20px; color: var(--matrix-green);">~/xsser01</span>
             </div>
             
-            <!-- Profile Image - Add your image here -->
+            <!-- Profile Image - صورتك -->
             <div class="profile-container">
                 <img src="Screenshot_2026-02-18-11-02-36-08_99c04817c0de5652397fc8b56c3b3817-Picsart-AiImageEnhancer.jpg" alt="xsser01 Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/120x120/00ff41/000000?text=xsser01'">
             </div>
@@ -617,6 +622,8 @@
   ██╔╝ ██╗███████║███████║███████╗██║  ██║██║     ██║
   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
             </div>
+            
+            <!-- المشغل مخفي تماماً - لا يظهر شيء -->
             
             <div class="social-links">
                 <a href="https://t.me/xsser01" class="social-btn" target="_blank">
@@ -877,6 +884,11 @@
         </div>
     </footer>
 
+    <!-- عنصر الصوت المخفي - لا يظهر في الصفحة -->
+    <audio id="bg-music" class="hidden-audio" loop>
+        <source src="223.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         // Matrix Rain Effect
         const canvas = document.getElementById('matrix');
@@ -1073,6 +1085,40 @@
                 const keySound = keySounds[Math.floor(Math.random() * keySounds.length)];
                 // Play typing sound here in real implementation
             }
+        });
+
+        // ===========================================
+        // تشغيل الأغنية مخفية - 223.mp3
+        // ===========================================
+        const bgMusic = document.getElementById('bg-music');
+        
+        // محاولة تشغيل الأغنية عند تحميل الصفحة
+        function playMusic() {
+            bgMusic.play().catch(error => {
+                console.log("التشغيل التلقائي منع من المتصفح، بنحاول بعد تفاعل المستخدم");
+                
+                // إذا منع المتصفح التشغيل، نشغل عند أول نقرة
+                document.addEventListener('click', function playOnClick() {
+                    bgMusic.play();
+                    document.removeEventListener('click', playOnClick);
+                }, { once: true });
+            });
+        }
+        
+        // تأخير بسيط لتحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(playMusic, 1000);
+        });
+        
+        // محاولة ثانية بعد 3 ثواني
+        setTimeout(playMusic, 3000);
+        
+        // ضبط مستوى الصوت (اختياري)
+        bgMusic.volume = 0.5; // 50% من الصوت
+        
+        // إذا كان فيه خطأ في الملف
+        bgMusic.addEventListener('error', function() {
+            console.log('ملف 223.mp3 غير موجود أو لا يمكن تشغيله');
         });
     </script>
 </body>
