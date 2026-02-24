@@ -83,7 +83,7 @@
             white-space: nowrap;
             overflow: hidden;
             width: 0;
-            animation: typing 2s steps(30) forwards,
+            animation: typing 3s steps(30) forwards,
                        blink-caret 0.5s step-end infinite;
         }
 
@@ -101,7 +101,7 @@
             width: 0%;
             height: 100%;
             background: var(--blood-red);
-            animation: progressFill 2s linear forwards;
+            animation: progressFill 3s linear forwards;
         }
 
         .hack-skull {
@@ -109,7 +109,7 @@
             animation: pulse 0.5s ease-in-out infinite;
             margin-top: 40px;
             opacity: 0;
-            animation: fadeInSkull 3s forwards;
+            animation: fadeInSkull 4s forwards;
         }
 
         @keyframes typing {
@@ -662,6 +662,7 @@
             font-size: 0.9rem;
         }
 
+        /* Hacker ASCII Art - كما في الكود الأول */
         .ascii-art {
             font-family: monospace;
             font-size: 0.7rem;
@@ -669,6 +670,7 @@
             line-height: 1.2;
             white-space: pre;
             margin: 20px 0;
+            text-align: left; /* محاذاة لليسار كما في الكود الأول */
         }
 
         .hidden-audio {
@@ -745,7 +747,7 @@
         <div class="hack-skull" id="hackSkull">💀</div>
     </div>
 
-    <!-- JOKE SCREEN - تظهر بعد ثواني -->
+    <!-- JOKE SCREEN - تظهر بعد شاشة الاختراق -->
     <div class="joke-screen" id="jokeScreen">
         <div class="joke-text">🤣 JUST KIDDING! 🤣</div>
         <div class="joke-subtext">YA WEAK!</div>
@@ -792,6 +794,7 @@
                 // Ethical Hacker • Security Researcher • Developer
             </div>
             
+            <!-- Hacker ASCII Art - بالضبط كما في الكود الأول (محاذاة لليسار) -->
             <div class="ascii-art">
                 ██╗ ██╗███████╗███████╗███████╗██████╗ ██████╗ ██╗
                 ╚██╗██╔╝██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██║
@@ -1064,7 +1067,9 @@
             "Installing backdoor...",
             "Taking control...",
             "System compromised!",
-            "All data encrypted!"
+            "All data encrypted!",
+            "Extracting credentials...",
+            "Sending to server..."
         ];
         
         let messageIndex = 0;
@@ -1075,9 +1080,9 @@
             } else {
                 clearInterval(messageInterval);
             }
-        }, 250);
+        }, 400); // تغيير النص كل 0.4 ثانية
         
-        // إخفاء شاشة الاختراق بعد 3 ثواني
+        // إخفاء شاشة الاختراق بعد 5 ثواني (أطول)
         setTimeout(() => {
             hackScreen.classList.add('fade-out');
             
@@ -1085,14 +1090,14 @@
             setTimeout(() => {
                 jokeScreen.classList.remove('fade-out');
                 
-                // إخفاء الشاشة المضحكة بعد ثانيتين
+                // إخفاء الشاشة المضحكة بعد 3 ثواني (أطول)
                 setTimeout(() => {
                     jokeScreen.classList.add('fade-out');
-                }, 2000);
+                }, 3000);
                 
             }, 500);
             
-        }, 3000);
+        }, 5000); // شاشة الاختراق 5 ثواني
 
         // Matrix Rain Effect
         const canvas = document.getElementById('matrix');
